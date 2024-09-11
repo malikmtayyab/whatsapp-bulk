@@ -20,12 +20,15 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
-    console.log("requestBody request.json", await request.json());
-    const { entry } = await request.json();
-    console.log("checking entry", entry[0].changes);
+    const requestBody = await request.json();
+    const entries = requestBody.entry;
     console.log(
-      "checking entry with JSON.stringify",
-      JSON.stringify(entry[0].changes)
+      "checking entries contacts",
+      entries[0].changes?.value?.contacts
+    );
+    console.log(
+      "checking entries messages",
+      entries[0].changes?.value?.messages
     );
 
     return NextResponse.json(
