@@ -20,7 +20,7 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
-    console.log("requestBody", request);
+    console.log("requestBody", JSON.stringify(request));
 
     return NextResponse.json(
       {
