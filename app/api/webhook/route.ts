@@ -1,8 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET() {
+export async function GET(request: NextRequest) {
+  const url = new URL(request.url);
+
+  // Extract query parameters
+  const challenge = url.searchParams.get("hub.challenge");
   try {
-    return new NextResponse("appleorangejuice", { status: 200 });
+    return new NextResponse(challenge, { status: 200 });
   } catch (error: any) {
     return NextResponse.json(
       {
