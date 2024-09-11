@@ -20,9 +20,13 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
-    console.log("requestBody request", request);
-    console.log("requestBody JSON.stringify", JSON.stringify(request));
     console.log("requestBody request.json", await request.json());
+    const { entry } = await request.json();
+    console.log("checking entry", entry[0].changes);
+    console.log(
+      "checking entry with JSON.stringify",
+      JSON.stringify(entry[0].changes)
+    );
 
     return NextResponse.json(
       {
