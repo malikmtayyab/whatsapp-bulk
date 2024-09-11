@@ -22,14 +22,7 @@ export async function POST(request: NextRequest) {
   try {
     const requestBody = await request.json();
     const entries = requestBody.entry;
-    console.log(
-      "checking entries contacts",
-      entries[0].changes?.value?.contacts
-    );
-    console.log(
-      "checking entries messages",
-      entries[0].changes?.value?.messages
-    );
+    console.log("checking changes", entries[0].changes[0].value);
 
     return NextResponse.json(
       {
